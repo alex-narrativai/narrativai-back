@@ -1,17 +1,25 @@
 {
-	"name": "Haskell",
-	"image": "haskell:9.4.6",
-	"forwardPorts": [3000]
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"haskell.haskell",
-				"phoityne.phoityne-vscode",
-				"jcanero.hoogle-vscode",
-				"github.vscode-github-actions",
-				"GitHub.copilot",
-				"GitHub.copilot-chat"
-			]
-		}
-	}
+  "name": "Haskell (Community)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "haskell.manageHLS": "GHCup"
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "haskell.haskell"
+      ]
+    }
+  },
+  // Comment out to connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
+"remoteUser": "vscode",
+"features": {
+	"ghcr.io/swift-server-community/swift-devcontainer-features/sqlite:1": {}
+}
 }

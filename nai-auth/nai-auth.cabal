@@ -6,12 +6,12 @@ cabal-version: 1.12
 
 name:           nai-auth
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/nai-auth#readme>
-homepage:       https://github.com/githubuser/nai-auth#readme
-bug-reports:    https://github.com/githubuser/nai-auth/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2023 Author name here
+description:    Please see the README on GitHub at <https://github.com/narrativai/auth-sec-service#readme>
+homepage:       https://github.com/narrativai/auth-sec-service#readme
+bug-reports:    https://github.com/narrativai/auth-sec-service/issues
+author:         Alex Springer
+maintainer:     alex@narrativai.com
+copyright:      2023 Alex Springer
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -21,10 +21,11 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/nai-auth
+  location: https://github.com/narrativai/auth-sec-service
 
 library
   exposed-modules:
+      Handler.Auth
       Lib
   other-modules:
       Paths_nai_auth
@@ -33,6 +34,11 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , bcrypt
+    , jwt
+    , sqlite-simple
+    , yesod
+    , yesod-auth
   default-language: Haskell2010
 
 executable nai-auth-exe
@@ -44,18 +50,29 @@ executable nai-auth-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bcrypt
+    , jwt
     , nai-auth
+    , sqlite-simple
+    , yesod
+    , yesod-auth
   default-language: Haskell2010
 
 test-suite nai-auth-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      AuthSpec
       Paths_nai_auth
   hs-source-dirs:
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bcrypt
+    , jwt
     , nai-auth
+    , sqlite-simple
+    , yesod
+    , yesod-auth
   default-language: Haskell2010
