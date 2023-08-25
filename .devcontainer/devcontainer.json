@@ -1,0 +1,17 @@
+{
+	"name": "Haskell",
+	"image": "haskell:9.4.6",
+	"forwardPorts": [3000]
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"haskell.haskell",
+				"phoityne.phoityne-vscode",
+				"jcanero.hoogle-vscode",
+				"github.vscode-github-actions",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
+			]
+		}
+	}
+}
