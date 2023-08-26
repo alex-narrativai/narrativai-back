@@ -16,7 +16,10 @@
 				"googlecloudtools.cloudcode",
 				"adamcowley.neo4j-vscode",
 				"jakeboone02.cypher-query-language",
-				"hashicorp.terraform"
+				"hashicorp.terraform",
+				"ms-python.python",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
 			]
 		}
 	}
