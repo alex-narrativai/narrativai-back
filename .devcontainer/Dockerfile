@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM haskell:9.6.2
 
 ENV LANG C.UTF-8
 
@@ -45,4 +45,5 @@ ARG GHC_VERSION="recommended"
 RUN ghcup install ghc "${GHC_VERSION}" --set \
     && ghcup install cabal recommended --set \
     && ghcup install stack recommended --set \
+    && ghcup install hls recommended --set \
     && cabal update
