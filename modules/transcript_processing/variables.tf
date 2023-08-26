@@ -1,10 +1,14 @@
 variable "name" {
-  description = "The name of the Transcript Processing Cloud Function"
+  description = "The name of the cloud function"
   type        = string
 }
 
 variable "runtime" {
-  description = "The runtime for the Cloud Function"
+  description = "The runtime for the cloud function"
   type        = string
-  default     = "python311"
+}
+
+variable "entry_point" {
+  description = "The entry point for the cloud function"
+  type        = string
 }

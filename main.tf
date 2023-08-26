@@ -2,7 +2,7 @@
 provider "google" {
   credentials = file("gcloud-narrativai.json")
   project     = "narrativai"
-  region      = "europe-west1"
+  region      = "europe-west2"
 }
 
 # Terraform Backend for State Management
@@ -18,7 +18,7 @@ module "transcript_processing" {
   source      = "./modules/transcript_processing"
   name        = "narrativai-transcript-processing"
   runtime     = "python311"
-  entry_point = "process_transcript"
+  entry_point = "process"
 }
 
 # Google Cloud Function for GPT-4 Interaction
@@ -26,7 +26,7 @@ module "gpt4_interaction" {
   source      = "./modules/gpt4_interaction"
   name        = "narrativai-gpt4-interaction"
   runtime     = "python311"
-  entry_point = "interact_with_gpt4"
+  entry_point = "summ"
 }
 
 # Google Cloud Function for Neo4j CRUD API
@@ -34,7 +34,7 @@ module "neo4j_crud_api" {
   source      = "./modules/neo4j_crud_api"
   name        = "narrativai-neo4j-crud-api"
   runtime     = "python311"
-  entry_point = "crud_api"
+  entry_point = "db"
 }
 
 # Auth0 Configuration (Assuming you have a separate module for Auth0)
