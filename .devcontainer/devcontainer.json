@@ -13,8 +13,12 @@
       },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        "haskell.haskell"
-      ]
+		"haskell.haskell",
+		"ms-azuretools.vscode-docker",
+		"GitHub.copilot-chat",
+		"GitHub.copilot",
+		"jcanero.hoogle-vscode"
+	]
     }
   },
   // Comment out to connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
