@@ -1,58 +1,61 @@
-# NAI Authentication and Security Service
+## Serverless Components
 
-### 1. **Define JWT Structure**
-   - **Header**: Use HMAC with SHA-256 (HS256) or RSA with SHA-256 (RS256) for signing.
-   - **Payload**: Include user type, client ID, permissions, and expiration time.
-   - **Signature**: Sign with a strong and securely stored secret key.
+1. **Transcript Processing Service**: Use Google Cloud Functions with Python and FastAPI. Trigger the function upon receiving raw text transcripts.
 
-### 2. **Implement User Model**
-   - **Database Schema**: Define fields for email, password hash, user type, client ID.
-   - **Haskell Data Types**: Create corresponding Haskell data types.
+2. **GPT-4 Interaction Service**: Similar to the Transcript Processing Service, use Google Cloud Functions. Trigger this function after the transcript has been processed.
 
-### 3. **Develop Authentication Endpoints**
-   - **Login Endpoint**: For user authentication.
-   - **Logout Endpoint**: To invalidate tokens (optional).
-   - **Token Refresh Endpoint**: For token renewal.
+3. **Database Interaction Service**: Use Neo4j AuraDB as your managed database. You can interact with it directly from your serverless functions using Neo4j's Python driver.
 
-### 4. **Implement Authorization Middleware**
-   - **Token Validation**: Verify signature and expiration.
-   - **Permission Checking**: Validate user type and permissions.
+4. **Authentication and Security Service**: Auth0 can be integrated directly into your serverless functions for authentication.
 
-### 5. **Implement Token Security**
-   - **Signing Key**: Use a strong key and store it securely.
-   - **Expiration**: Set appropriate token expiration and implement refresh tokens.
-   - **HTTPS**: Ensure secure transmission using HTTPS.
+5. **Tooling and Infrastructure**: 
+    - **Containerization**: Not needed for serverless components.
+    - **Orchestration**: Managed by GCP.
+    - **CI/CD**: GitHub Actions can deploy directly to Google Cloud Functions.
+    - **Monitoring**: Use Google Cloud Monitoring.
+    - **Caching**: Use Google Cloud Memorystore (compatible with Redis).
+    - **Load Balancing**: Managed by GCP for serverless components.
 
-### 6. **Implement Password Security**
-   - **Hashing**: Use bcrypt with a strong salt for password hashing.
-   - **Storage**: Store hashed passwords securely in the database.
+### Terraform Structure
 
-### 7. **Integration with Other Services**
-   - **Authentication**: Validate Service Users and API Users as needed.
+1. **Backend Services**: Separate Terraform modules for each serverless function and other services.
+2. **Tooling and Infrastructure**: Terraform modules for GitHub Actions setup, Monitoring, and Memorystore.
+3. **Variables and Outputs**: Use Terraform variables for configurable settings and outputs for service endpoints.
 
-### 8. **Testing**
-   - **Unit Tests**: For individual components.
-   - **Integration Tests**: For the entire authentication flow.
+## Directory Structure
 
-### 9. **API Documentation**
-   - **Provider**: Use Swagger or Postman for interactive API documentation.
-   - **Content**: Include endpoints, request/response formats, error handling.
+```plaintext
+.
+├── main.tf
+├── variables.tf
+├── outputs.tf
+└── modules
+    ├── transcript_processing
+    ├── gpt4_interaction
+    ├── database_interaction
+    ├── auth0
+    ├── github_actions
+    ├── monitoring
+    └── memorystore
+```
 
-### 10. **Containerization**
-   - **Docker**: Create a Dockerfile to define the container for the service.
-   - **Images**: Build Docker images for different environments (development, production).
+## Sample Terraform Code for a Serverless Function
 
-### 11. **Orchestration**
-   - **Kubernetes**: Define Kubernetes manifests for deployment, scaling, and management.
-   - **Services**: Set up Kubernetes services for internal and external communication.
+```hcl
+module "transcript_processing" {
+  source = "./modules/transcript_processing"
+  name   = "transcript-processing-function"
+  runtime = "python310"
+  entry_point = "process_transcript"
+}
+```
 
-### 12. **Monitoring and Logging**
-   - **Monitoring**: Implement monitoring using tools like Prometheus.
-   - **Logging**: Set up logging to track authentication activities and potential security issues.
+## Best Practices
 
-### 13. **Compliance and Security Auditing**
-   - **Compliance**: Ensure adherence to legal and regulatory requirements.
-   - **Auditing**: Regularly review and update security measures.
+1. **Infrastructure as Code**: Use Terraform for all cloud resources.
+2. **State Management**: Use Google Cloud Storage as a backend for Terraform state.
+3. **Modularization**: Keep Terraform code modular for each service.
+4. **Continuous Deployment**: Use GitHub Actions for CI/CD.
+5. **Monitoring and Logging**: Integrate Google Cloud Monitoring for real-time metrics.
 
-### Conclusion
-This comprehensive plan outlines the steps to build the Centralized Authentication and Security Service, focusing on best practices for JWT, password security, containerization, orchestration, and API documentation. By following this plan, you'll create a robust, scalable, and secure authentication service that lays the foundation for the rest of the system. Each step provides the necessary detail to guide the development process, ensuring a successful implementation.
+By using Neo4j AuraDB, you can maintain the serverless architecture while leveraging a powerful graph database.
