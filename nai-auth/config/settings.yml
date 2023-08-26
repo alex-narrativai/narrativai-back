@@ -1,3 +1,0 @@
-database:
-  database: "_env:SQLITE_DATABASE:dev.sqlite3"
-  poolsize: "_env:SQLITE_POOLSIZE:10"

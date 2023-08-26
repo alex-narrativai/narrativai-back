@@ -1,4 +1,0 @@
--- config/routes
-/auth/register RegisterR POST
-/auth/login LoginR POST
-/auth/validate ValidateR GET

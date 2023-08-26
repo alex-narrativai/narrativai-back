@@ -45,5 +45,4 @@ ARG GHC_VERSION="recommended"
 RUN ghcup install ghc "${GHC_VERSION}" --set \
     && ghcup install cabal recommended --set \
     && ghcup install stack recommended --set \
-    && ghcup install hls recommended --set \
     && cabal update

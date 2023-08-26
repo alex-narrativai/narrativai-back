@@ -1,6 +1,0 @@
--- config/models
-User
-    email Text
-    password Text
-    UniqueEmail email
-    deriving Show
