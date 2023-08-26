@@ -37,7 +37,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "echo \"$SERVICE_ACCOUNT_CREDENTIALS\" > /workspaces/narrativai-backend/gcloud-narrativai.json; go get github.com/gruntwork-io/terratest/modules/terraform; go get github.com/gruntwork-io/terratest/modules/gcp"
+	"postCreateCommand": "echo \"$SERVICE_ACCOUNT_CREDENTIALS\" > /workspaces/narrativai-backend/gcloud-narrativai.json; go get github.com/gruntwork-io/terratest/modules/terraform; go get github.com/gruntwork-io/terratest/modules/gcp;  export GOOGLE_APPLICATION_CREDENTIALS=\"/workspaces/narrativai-backend/gcloud-narrativai.json\";"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

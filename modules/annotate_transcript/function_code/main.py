@@ -94,4 +94,4 @@ def annotate_transcript(request):
 
     with app.app_context():
         annotated_transcript['transcript'] = transcript
-        return jsonify(annotated_transcript), 200
+        return jsonify(annotated_transcript)

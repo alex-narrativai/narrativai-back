@@ -16,6 +16,7 @@ terraform {
 resource "google_storage_bucket" "bucket" {
   name = var.source_bucket
   location = var.region
+  force_destroy = true
 }
 
 # Google Cloud Function for Transcript Processing

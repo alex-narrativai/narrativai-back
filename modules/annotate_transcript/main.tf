@@ -27,6 +27,15 @@ resource "google_cloudfunctions_function" "annotate_transcript" {
   available_memory_mb   = 128
 }
 
+resource "google_cloudfunctions_function_iam_member" "public_access" {
+  project        = google_cloudfunctions_function.annotate_transcript.project
+  region         = google_cloudfunctions_function.annotate_transcript.region
+  cloud_function = google_cloudfunctions_function.annotate_transcript.name
+
+  role   = "roles/cloudfunctions.invoker"
+  member = "allUsers"
+}
+
 output "url" {
   value = google_cloudfunctions_function.annotate_transcript.https_trigger_url
 }

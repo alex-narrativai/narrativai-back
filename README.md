@@ -141,7 +141,7 @@ Handles all authentication and security aspects of the application. Provided by 
 ├── README.md
 ├── .devcontainer
 └── modules
-    ├── transcript_processing
+    ├── annotate_transcript
     ├── gpt4_interaction
     ├── database_interaction
     ├── auth0
