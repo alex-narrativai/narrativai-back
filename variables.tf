@@ -9,7 +9,7 @@ variable "project_id" {
 variable "region" {
   description = "The GCP region"
   type        = string
-  default     = "europe-west1"
+  default     = "europe-west2"
 }
 
 variable "runtime" {
@@ -28,4 +28,10 @@ variable "repo_owner" {
   description = "The owner of the GitHub repository"
   type        = string
   default     = "alex-narrativai"
+}
+
+variable source_bucket {
+  description = "The name of the Cloud Storage bucket to upload the file to"
+  type        = string
+  default     = "narrativai__functions"
 }

@@ -11,6 +11,9 @@
 		},
 		"ghcr.io/devcontainers-contrib/features/terraform-asdf:2": {
 			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "latest"
 		}
 	},
 	"customizations": {
@@ -34,7 +37,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "echo -e \"$SERVICE_ACCOUNT_CREDENTIALS\" > /workspaces/narrativai-backend/gcloud-narrativai.json"
+	"postCreateCommand": "echo \"$SERVICE_ACCOUNT_CREDENTIALS\" > /workspaces/narrativai-backend/gcloud-narrativai.json; go get github.com/gruntwork-io/terratest/modules/terraform; go get github.com/gruntwork-io/terratest/modules/gcp"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
