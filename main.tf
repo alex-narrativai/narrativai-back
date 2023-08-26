@@ -1,6 +1,6 @@
 # Provider Configuration
 provider "google" {
-  credentials = file("/workspaces/auth-sec-service/narrativai-d06f1939f299.json")
+  credentials = file("gcloud-narrativai.json")
   project     = "narrativai"
   region      = "europe-west1"
 }

@@ -41,7 +41,7 @@ Open the folder in a development container - all configuration is done and exten
 
 Place the Google Service Account JSON file at the root level of the project. This file is crucial for authenticating your Terraform scripts with Google Cloud Platform.
 
-- **File Location**: `/path/to/narrativai-backend/your-service-account.json`
+- **File Location**: `/path/to/narrativai-backend/gcloud-narrativai.json`
 
 ---
 

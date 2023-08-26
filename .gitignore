@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 # GCP Credentials
-narrativai-d06f1939f299.json
+gcloud-narrativai.json
 
 # C extensions
 *.so
